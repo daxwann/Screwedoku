@@ -1,13 +1,15 @@
 require_relative "board"
+require "byebug"
 
 class SudokuGame
-  def self.from_file(filename)
-    board = Board.from_file(filename)
-    self.new(board)
-  end
 
   def initialize(board)
     @board = board
+  end
+
+  def self.from_file(filename)
+    board = Board.from_file(filename)
+    self.new(board)
   end
 
   def get_pos

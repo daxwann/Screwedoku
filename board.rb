@@ -1,7 +1,9 @@
 require_relative "tile"
+require "byebug"
 
 class Board
-  def self.empty_grid
+
+  def empty_grid
     Array.new(9) do
       Array.new(9) { Tile.new(0) }
     end
@@ -17,18 +19,18 @@ class Board
     self.new(tiles)
   end
 
-  def initialize(grid = self.empty_grid)
+  def initialize(grid)
     @grid = grid
   end
 
   def [](pos)
     x, y = pos
-    grid[x][y]
+    @grid[y][x]
   end
 
   def []=(pos, value)
     x, y = pos
-    tile = grid[x][y]
+    tile = @grid[y][x]
     tile.value = value
   end
 
@@ -80,6 +82,6 @@ class Board
     (0..8).to_a.map { |i| square(i) }
   end
 
-  private
+ private
   attr_reader :grid
 end
